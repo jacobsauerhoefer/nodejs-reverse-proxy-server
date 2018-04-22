@@ -17,7 +17,7 @@ npm start
 ```
 
 ## Configuration
-Define routes in a "config.js" file using the following format:
+Define routes in a `config.js` file using the following format:
 ```
 module.exports = routes = {
     'user': {
