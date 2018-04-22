@@ -17,6 +17,18 @@ npm start
 ```
 
 ## Configuration
-
+Define routes in a "config.js" file using the following format:
+```
+module.exports = routes = {
+    'user': {
+        apiRoute: '/api/user',
+        upstreamUrl: '127.0.0.1:3000'
+    },
+    'books': {
+        apiRoute: '/api/books',
+        upstreamUrl: '127.0.0.1:3001'
+    }
+}
+```
 
 ### Class: ReverseProxyServer
