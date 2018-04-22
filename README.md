@@ -19,21 +19,4 @@ npm start
 ## Configuration
 
 
-
-## Dependencies
-
-colors
-figlet
-http-proxy
-
-## API Reference
-
-Coming Soon
-
-## Tests
-
-Coming Soon
-
-## Contributors
-
-Coming Soon
+### Class: ReverseProxyServer
