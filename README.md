@@ -6,7 +6,7 @@ Inspired by: https://memz.co/api-gateway-microservices-docker-node-js/
 
 Standalone Reverse Proxy Server with support for multiple routes using http-proxy. Define routes from multiple services in a single configuration file and access them from a single endpoint.
 
-## Installation
+## Installation & Usage
 
 ```bash
 #Install Node Modules from package.json
