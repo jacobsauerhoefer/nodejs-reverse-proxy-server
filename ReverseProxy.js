@@ -2,10 +2,10 @@ const util = require('util'),
     figlet = require('figlet'),
     colors = require('colors'),
     http = require('http'),
-    parseurl = require('parseurl'),
     httpProxy = require('http-proxy');
 
 const routes = require('./config');
+const ReverseProxyServer = require('./ReverseProxyServer');    
 const log = console.log;
 
 figlet.text('REVERSE-PROXY', {
@@ -18,35 +18,17 @@ figlet.text('REVERSE-PROXY', {
         log(err);
         return;
     }
-    log(" ");
+    log("");
     log(data.white.bold);
-    log("v0.0.1.dev".underline.bold);
-    log(" ");
+    log("v1.0.0.alpha".underline.bold);
+    log("");
 });
 
-function returnError(req, res) {
-    res.writeHead(502, {'Content-Type': 'text/plain'});
-    res.write('Bad Gateway for: ' + req.url);
-    res.end();
-}
+const reverseProxyServer = new ReverseProxyServer(routes);
+const server = http.createServer((req, res) => reverseProxyServer.handleRequest(req, res));
 
-const proxy = httpProxy.createProxyServer();
-function handleRoute(route, req, res) {
-    var url = req.url;
-    var parsedUrl = parseurl(req);
-    if (parsedUrl.path.indexOf(route.apiRoute) === 0) {
-        req.url = url.replace(route.apiRoute, '');
-        proxy.web(req, res, { target: route.upstreamUrl });
-        return true;
-    }
-}
-
-const server = http.createServer(function (req, res) {
-    for (id in routes) {
-        if (routes.hasOwnProperty(id) && handleRoute(routes[id], req, res)) {
-            return;
-        }
-    }
-    returnError(req, res);
+process.on('uncaughtException', (err) => {
+    log(err);
 });
+
 server.listen(8000);
