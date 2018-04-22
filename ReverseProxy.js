@@ -5,7 +5,7 @@ const util = require('util'),
     httpProxy = require('http-proxy');
 
 const routes = require('./config');
-const ReverseProxyServer = require('./ReverseProxyServer');    
+const ReverseProxyServer = require('./src/ReverseProxyServer');    
 const log = console.log;
 
 figlet.text('REVERSE-PROXY', {
