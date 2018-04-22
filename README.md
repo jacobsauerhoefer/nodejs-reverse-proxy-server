@@ -13,7 +13,7 @@ Standalone Reverse Proxy Server with support for multiple routes using http-prox
 npm i
 
 #Start Server
-npm start
+npm start or pm2 start ReverseProxy
 ```
 
 ## Configuration
