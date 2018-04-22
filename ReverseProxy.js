@@ -41,7 +41,7 @@ function handleRoute(route, req, res) {
     }
 }
 
-var server = http.createServer(function (req, res) {
+const server = http.createServer(function (req, res) {
     for (id in routes) {
         if (routes.hasOwnProperty(id) && handleRoute(routes[id], req, res)) {
             return;
